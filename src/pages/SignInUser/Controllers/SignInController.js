@@ -1,9 +1,9 @@
 import { Subject } from './../../../subject'
 import { User } from '../Models/User'
-import { createUser } from '../../../services/user.service'
+import { signIn } from '../../../services/signIn.service'
 import { handlerError } from '../../../helpers/handlerError'
 
-class UserController {
+class SignInController {
   
   constructor(User, Subject) {
     this.user = User
@@ -17,23 +17,13 @@ class UserController {
     this.subject.publish(this)
   }
 
-  setFirstName(firstName) {
-    this.user.setFirstName(firstName)
-    this.subject.publish(this)
-  }
-
-  setLastName(lastName) {
-    this.user.setLastName(lastName)
-    this.subject.publish(this)
-  }
-
   setPassword(password) {
     this.user.setPassword(password)
     this.subject.publish(this)
   }
 
-  createUser(toastRef) {
-    createUser(this.user)
+  signIn(toastRef) {
+    signIn(this.user)
       .then(response => {
         this.response = { 
           data: response.data, 
@@ -54,8 +44,8 @@ class UserController {
   }
 }
 
-const userController = new UserController(new User(), new Subject());
+const signInController = new SignInController(new User(), new Subject());
 
 export {
-  userController
+  signInController
 }

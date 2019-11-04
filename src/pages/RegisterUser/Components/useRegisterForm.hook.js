@@ -24,7 +24,6 @@ export function useRegisterForm() {
   function onUserUpdated(newState) {
     const { email, firstName, lastName, password, validateEmail, validatePassword } = newState.user
     const { error, response } = newState
-    console.log({validateEmail, validatePassword})
     setUser({ email, firstName, lastName, password, validateEmail, validatePassword })
     setError(error)
     setResponse(response)

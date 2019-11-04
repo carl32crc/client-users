@@ -1,4 +1,4 @@
-import { validatorString } from './../../../helpers/Validators/ValidatorString'
+import { validatorString } from './../../helpers/Validators/ValidatorString'
 
 const MIN_CHARS = 8
 

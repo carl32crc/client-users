@@ -1,4 +1,4 @@
-import { emailValidator, passwordValidator } from '../Utils'
+import { emailValidator, passwordValidator } from '../../shared'
 
 export class User {
 

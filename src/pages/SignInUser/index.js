@@ -1,5 +1,6 @@
 import React from 'react'
+import { SignInForm } from './Components/SignInForm.component'
 
 export function SignInUser() {
-  return <h1>Sign In</h1>
+  return <SignInForm />
 }

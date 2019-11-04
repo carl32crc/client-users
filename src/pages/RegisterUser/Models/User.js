@@ -11,8 +11,8 @@ export class User {
     this.lastName = ''
     this.email = ''
     this.password = ''
-    this.validatePassword = { validate: true }
-    this.validateEmail = { validate: true }
+    this.validatePassword = { validate: false }
+    this.validateEmail = { validate: false }
   }
 
   setFirstName(firstName) {

@@ -9,7 +9,7 @@ export class User {
   initialState() {
     this.email = ''
     this.password = ''
-    this.validateEmail = { validate: true }
+    this.validateEmail = { validate: false }
   }
 
   setEmail(email) {

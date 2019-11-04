@@ -3,6 +3,6 @@ const emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-
 
 export function emailValidator(string) {
   return emailRegex.test(string) 
-    ? { message: 'Correct email.' }
-    : { message: 'Invalid email.' }
+    ? { validate: false, message: 'Correct email.' }
+    : { validate: true, message: 'Invalid email.' }
 }

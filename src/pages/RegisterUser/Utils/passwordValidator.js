@@ -28,5 +28,5 @@ export function passwordValidator(string) {
 
   return validators 
     ? validators
-    : { validate: true, message: 'Correct password.' } 
+    : { validate: false, message: 'Correct password.' } 
 }

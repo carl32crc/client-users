@@ -30,6 +30,10 @@ export function RegisterForm() {
         <button 
           type='button' 
           onClick={() => userController.createUser(toastRef)}
+          disabled={
+            validateEmail.validate ||
+            validatePassword.validate
+          }
         >
           Register
         </button>

@@ -9,7 +9,7 @@ class UserController {
     this.user = User
     this.subject = Subject
     this.error = null
-    this.response = null
+    this.response = { message: null }
   }
 
   setEmail(email) {
@@ -32,19 +32,21 @@ class UserController {
     this.subject.publish(this)
   }
 
-  createUser() {
+  createUser(toastRef) {
     createUser(this.user)
       .then(response => {
         this.response = { 
           data: response.data, 
           message: handlerError(response) 
         }
-        this.error = null;
+        this.error = null
+        toastRef.current.showToast()
         this.subject.publish(this)
       })
       .catch((error) => {
-        this.response = null;
+        this.response = null
         this.error = handlerError(error.response)
+        toastRef.current.showToast()
         this.subject.publish(this)
       })
   }

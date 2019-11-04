@@ -1,0 +1,30 @@
+.toast {
+  color: #FFF;
+  background-color: #333;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 23%;
+  padding: 20px;
+  text-align: center;
+}
+
+.toast > span {
+  position: absolute;
+  right: 20px;
+  font-weight: bold;
+  color: #FFF;
+  cursor: pointer;  
+}
+  
+.toast-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 2s, visibility 2s;    
+}
+  
+.toast-inactive {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s, visibility 2s;
+}

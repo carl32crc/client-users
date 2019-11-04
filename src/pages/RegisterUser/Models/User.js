@@ -1,4 +1,4 @@
-
+import { emailValidator, passwordValidator } from '../Utils'
 
 export class User {
 
@@ -11,6 +11,8 @@ export class User {
     this.lastName = ''
     this.email = ''
     this.password = ''
+    this.validatePassword = null
+    this.validateEmail = null
   }
 
   setFirstName(firstName) {
@@ -22,10 +24,12 @@ export class User {
   }
 
   setEmail(email) {
+    this.validateEmail = emailValidator(email)
     this.email = email
   }
 
   setPassword(password) {
+    this.validatePassword = passwordValidator(password)
     this.password = password
   }
 }

@@ -29,7 +29,7 @@ export const Input = ({
     controller.subject.attach(onUserUpdated)
   
     return () => controller.subject.detach(onUserUpdated)
-  },[])
+  })
 
   return (
     <React.Fragment>

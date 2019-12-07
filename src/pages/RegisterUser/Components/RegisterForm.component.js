@@ -11,10 +11,8 @@ import { userController } from '../Controllers/UserController'
 export function RegisterForm() {
     
   return (
-    <WrappedForm className='container-register' title='Register'>
-      
+    <WrappedForm className='container-register' title='Register'>  
       <form>
-
         <Input 
           className='email'
           controller={userController} 
@@ -25,7 +23,6 @@ export function RegisterForm() {
           validatorKey='validateEmail' 
           withValidator
         />
-
         <Input 
           className='firstname'
           controller={userController} 
@@ -34,7 +31,6 @@ export function RegisterForm() {
           placeholder='first name'
           type='text'
         />
-
         <Input 
           className='lastname'
           controller={userController} 
@@ -43,7 +39,6 @@ export function RegisterForm() {
           placeholder='last name'
           type='text'
         />
-
         <Input 
           className='password'
           controller={userController} 
@@ -54,11 +49,8 @@ export function RegisterForm() {
           validatorKey='validatePassword' 
           withValidator
         />
-
       </form>
-
       <FooterForm />
-
     </WrappedForm>
   )
 }

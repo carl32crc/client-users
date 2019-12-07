@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { userController } from '../Controllers/UserController'
+import { signInController } from '../Controllers/SignInController'
 
 import { Toast } from '../../../components/Toast'
 
@@ -9,31 +9,27 @@ export const FooterForm = () => {
   const history = useHistory()
   const toastRef = useRef(null)
 
-  const [error, setError] = useState(userController.error)
-  const [response, setResponse] = useState(userController.response)
-  const [validateEmail, setValidateEmail] = useState(userController.user.validateEmail.validate)
-  const [validatePassword, setValidatePassword] = useState(userController.user.validatePassword.validate)
+  const [error, setError] = useState(signInController.error)
+  const [response, setResponse] = useState(signInController.response)
+  const [validateEmail, setValidateEmail] = useState(signInController.user.validateEmail.validate)
 
   const className = [
-    validateEmail &&
-    validatePassword ? 'signin-active' : 'signin-inactive']
+    validateEmail ? 'signin-active' : 'signin-inactive']
     .filter(Boolean)
     .join(' ')
 
   function onUserUpdated(newState) {
     const { error, response } = newState
     const validateEmail = newState.user.validateEmail.validate
-    const validatePassword = newState.user.validatePassword.validate
-    setValidatePassword(validatePassword)
     setValidateEmail(validateEmail)
     setError(error)
     setResponse(response)
   }
 
   useEffect(() => {
-    userController.subject.attach(onUserUpdated)
+    signInController.subject.attach(onUserUpdated)
 
-    return () => userController.subject.detach(onUserUpdated)
+    return () => signInController.subject.detach(onUserUpdated)
   },[])
     
   return (
@@ -41,21 +37,24 @@ export const FooterForm = () => {
       <button
         className={className}
         type='button'
-        onClick={() => userController.createUser(toastRef)}
+        onClick={() => 
+          signInController.signIn(toastRef)
+        }
         disabled={
-          !validateEmail ||
-          !validatePassword
+          !validateEmail
         }
       >
-        Register
+        Sign In
       </button>
       
       <button
-        onClick={() => history.push('/')}
+        onClick={() => 
+          history.push('register')
+        }
         className='register'
         type='button'
       >
-        Return to login
+        Register
       </button>
 
       <Toast message={error || response.message} ref={toastRef} />
